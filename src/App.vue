@@ -1,16 +1,20 @@
 
 <template>
   <div id="app">
-    <p>这是music</p>
     <music></music>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
   import music from './components/music/music'
+  import recommend from './page/personalRecom/presonalRecom.vue'
   export default {
     name: 'app',
-    components: {music}
+    components: {
+      music,
+      recommend,
+    }
 
   }
 </script>

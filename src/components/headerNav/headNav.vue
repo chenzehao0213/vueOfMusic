@@ -4,10 +4,10 @@
 			<!-- 搜索栏目 -->
 			<div class="searchFrame">
 				<!-- 麦的icon -->
-				<i></i>
+        <i class="iconfont icon-micro"></i>
 				<!-- 搜索框 -->
 				<div class="searchBox">
-				<label for><span>搜索音乐，歌词，电台</span></label>
+				<label for="searchBox"><span>搜索音乐，歌词，电台</span></label>
 				<input type="text"  id="searchBox" @click="goSearchSong">
 				</div>
 				<!-- 播放页和当前页icon切换 -->
@@ -17,14 +17,13 @@
 			<tab>
 				<tab-item @on-item-click="skipPage">个性推荐</tab-item>
 				<tab-item @on-item-click="skipPage">歌单</tab-item>
-        <tab-item @on-item-click="skipPage">主播电台</tab-item>
 				<tab-item @on-item-click="skipPage">排行榜</tab-item>
 			</tab>
 		</div>
 	</div>
 </template>
 <script type="text/javascript">
-	import {Tab,TabItem} from 'vux';
+	import {Tab,TabItem} from 'vux/src/components/tab';
 	export default {
 		name:"headerNav",
     components:{Tab,TabItem},
@@ -32,10 +31,10 @@
     {
       return {};
     },
-    props:['tabIndex'],
+    props:['tab-index'],
     methods: {
 		  //跳转到播放界面
-      goSongDetail()
+      goSongDetails()
       {
         if(this.curMusic != "")
         {
@@ -67,16 +66,8 @@
         }
         else if(index == 2)
         {
-          this.$router.push({name:'radioStation'});
-        }
-        else {
           this.$router.push({name:'rankList'});
         }
-
-
-
-
-
       }
     },
     computed:{

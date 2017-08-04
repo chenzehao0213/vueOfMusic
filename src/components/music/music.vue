@@ -1,6 +1,8 @@
 <template>
   <div id="music">
-    <audio id="musicPlayer" :src="musicUrl" @timeupdate="setCurTime" @ended="initMusicState" @durationChange="setDuration" @canPlay="playMusic" ref="player"></audio>
+    <!--@ended="initMusicState"-->
+    <audio id="musicPlayer" :src="musicUrl" @timeupdate="setCurTime"  @durationChange="setDuration" @canPlay="playMusic" refs="player"></audio>
+
   </div>
 </template>
 
@@ -18,7 +20,7 @@
         // 当前音乐
         curMusic: state => state.playSongs.curMusic,
         // 歌单
-        songListDetails: state => state.songDetails.tracks
+        //songListDetails: state => state.songDetails.tracks
       })
     },
     methods: {
@@ -35,42 +37,42 @@
         return this.$store.commit('set_playStatus', true)
       },
       // 初始化播放状态
-      initMusicState(){
-        if(this.songListDetails.length > 0)
-        {
-          let obj ={
-            id: this.$router.params.id,
-            type: 'next'
-          }
-          this.$store.dispatch('go_SwitchSongs',obj).then(
-            (res) => {
-              //false则暂停
-              if(res ==false)
-              {
-                this.$refs.player.pause();
-                this.$store.commit('set_playStatus',false);
-                this.$store.commit('set_musicDuration',0);
-              }
-              else
-              {
-                this.$store.dispatch('get_PlaySongDetails',res);
-                this.$router.push({
-                  name: 'songDetails',
-                  params:{
-                    id: res
-                  }
-                })
-              }
-            }
-          )
-        }
-        else
-        {
-          this.$refs.player.pause();
-          this.$store.commit('set_playStatus',false);
-          this.$store.commit('set_musicDuration',0);
-        }
-      }
+//      initMusicState(){
+//        if(this.songListDetails.length > 0)
+//        {
+//          let obj ={
+//            id: this.$router.params.id,
+//            type: 'next'
+//          }
+//          this.$store.dispatch('go_SwitchSongs',obj).then(
+//            (res) => {
+//              //false则暂停
+//              if(res == false)
+//              {
+//                this.$refs.player.pause();
+//                this.$store.commit('set_playStatus',false);
+//                this.$store.commit('set_musicDuration',0);
+//              }
+//              else
+//              {
+//                this.$store.dispatch('get_PlaySongDetails',res);
+//                this.$router.push({
+//                  name: 'songDetails',
+//                  params:{
+//                    id: res
+//                  }
+//                })
+//              }
+//            }
+//          )
+//        }
+//        else
+//        {
+//          this.$refs.player.pause();
+//          this.$store.commit('set_playStatus',false);
+//          this.$store.commit('set_musicDuration',0);
+//        }
+//      }
     },
 //    watch: {
 //      //监听歌曲的播放状态

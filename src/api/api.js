@@ -21,6 +21,9 @@ const apiList = {
   queryPlayList: "/top/playlist",
   //排行榜{排行榜}
   queryToplist: "/top/list",
+  //参数idx
+  //"3":飙升榜，"0": 云音乐新歌榜,,"2": 网易原创歌曲榜,"1": 云音乐热歌榜，"7": KTV嗨榜,"4": 云音乐电音榜,
+
   //推荐歌单详情
   querySongListDetail: '/playlist/detail',
   //歌曲详情

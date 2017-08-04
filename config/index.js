@@ -15,11 +15,75 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8080,
+    port: 8099,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      //滑动栏
+      '/banner': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/banner': '/banner'
+        }
+      },
+      //个性推荐歌单
+      '/personalized': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/personalized': '/personalized'
+        }
+      },
+
+      //独家放送
+      '/personalized/privatecontent':
+        {
+          target: 'http://127.0.0.1:3000',
+          changeOrigin :true,
+          pathRewrite :{
+            '^/personalized/privatecontent': '/personalized/privatecontent'
+          }
+        },
+
+      //推荐mv
+      '/personalized/mv': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/personalized/mv': '/personalized/mv'
+        }
+      },
+
+      //主播电台
+      '/personalized/djprogram': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/personalized/djprogram': '/personalized/djprogram'
+        }
+      },
+
+      //排行榜
+      '/top/list': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/top/list': '/top/list'
+        }
+      },
+
+      //精品歌单
+      '/top/playlist/highquality': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/top/playlist/highquality': '/top/playlist/highquality'
+        }
+      },
+    },
     cssSourceMap: false
   }
 }
+

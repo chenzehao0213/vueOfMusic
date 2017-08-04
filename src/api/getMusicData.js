@@ -1,4 +1,4 @@
-import api from 'src/api/api';
+import api from './api';
 import axios from 'axios';
 import querystring from 'querystring';
 
@@ -13,12 +13,12 @@ const opera_res = (data) =>{
 }
 
 export default async(pathName,queryData)=>{
-	let str = "http://47.94.16.170:3000";
+	let str = "http://localhost:8099";
 	let url = str.concat(api[pathName]);
 	let result;
 	if (queryData) {
 		result = await axios.get(url,{
-			params:queryData
+			params:queryData,
 		});
 	}
 	else{
