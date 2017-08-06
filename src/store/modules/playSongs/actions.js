@@ -6,7 +6,6 @@ export default {
     let res = await getMusicData('queryMusicUrl',{
       id:payload
     });
-   // console.log(res);
     //是否更新musicUrl
     if(context.state.curMusic =='' || context.state.curMusic != payload)
     {
@@ -20,9 +19,8 @@ export default {
   {
     //console.log(payload);
     let res = await getMusicData('querySongDetail',{
-      id:payload
+      ids:payload
     });
-    //console.log(res);
     context.commit('set_songDetails',res.data);
   },
 
@@ -49,9 +47,50 @@ export default {
     context.dispatch('get_musicUrl',payload);
     context.dispatch('get_songDetails',payload);
     context.dispatch('get_lyric',payload);
+  },
+
+  //切换音乐
+  async go_switchSongs(context,payload)
+  {
+    let songList = context.rootState.songListDetails.tracks;
+    let result = false;
+    if(songList.length>0)
+    {
+      for(let i=0;i<songList.length;i++)
+      {
+        if(songList[i].id == payload.id)
+        {
+          //向上
+          if(payload.type == 'prev')
+          {
+            if(i==0)
+            {
+              return songList[songList.length -1].id;
+            }
+            else
+            {
+              return songList[i-1].id;
+            }
+          }
+          //向下
+          else
+          {
+            if(i==(songList.length-1))
+            {
+              return songList[0].id;
+            }
+            else
+            {
+              return songList[i+1].id;
+            }
+          }
+          result = true;
+        }
+      }
+      if(result == false)
+      {
+        return false;
+      }
+    }
   }
-
-  //
-
-
 }

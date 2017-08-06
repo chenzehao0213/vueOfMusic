@@ -1,25 +1,21 @@
-//播放详情页中的——歌单列表
 <template>
-  <div v-if="songListStatus==true">
-    //列表头部标题
-    <div>
-      歌单列表
+  <div class="bottomList">
+    <div class="bottom-header">
+      <h1>歌单列表</h1>
     </div>
 
-    //将要播放的歌曲列表
-    <div>
+    <div class="bottom-content">
       <ul>
-        <li v-for="(item,i) in songDetailList" @click="switchSong">
-          <i class="songIcon"></i>
+        <li v-for="(item,i) in songListDetails.tracks"  :key="i" @click="switchSongs">
+          <i class="iconfont icon-laba" v-if="item.id==curMusic"></i>
           {{item.name}}
-          <s>songSinger</s>
+          <s> - {{item.ar[0].name}}</s>
         </li>
       </ul>
     </div>
 
-    //底部的关闭按钮
-    <div @click="closeSongList" class="closeButton">
-      关闭
+    <div class="bottom-footer">
+      <p @click="closeBottomSongList">关闭</p>
     </div>
   </div>
 </template>
@@ -28,17 +24,31 @@
 
 
 <script>
-export default {
-  data()
-  {
-    return{}
-  },
-  name:'bottomSongList',
-  computed:{
+  import {mapState} from 'vuex'
+  export  default {
+    name : 'bottomSongList',
+    components: {
 
+    },
+
+    methods:{
+      switchSongs() {
+
+      },
+      closeBottomSongList(){
+        this.$store.commit('set_songListStatus',false);
+      }
+    },
+
+    computed:{
+      ...mapState({
+        songListDetails: state => state.songListDetails,
+        curMusic : state => state.playSongs.curMusic,
+      })
+    }
   }
 
-}
+
 </script>
 
 

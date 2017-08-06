@@ -38,6 +38,7 @@ export default {
   set_curMusic(state,payload)
   {
     state.curMusic = payload;
+    console.log(state.curMusic);
   },
 
   //是否打开播放列表

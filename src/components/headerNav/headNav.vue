@@ -39,7 +39,7 @@
         if(this.curMusic != "")
         {
           this.$router.push({
-            name:'songDetails',
+            name:'songDetail',
             params:{id:this.curMusic}
           })
         }

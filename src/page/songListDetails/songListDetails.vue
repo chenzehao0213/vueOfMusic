@@ -11,7 +11,7 @@
     <!--歌单情况-->
     <div class="header_content">
       <div>
-        <img v-lazy="songListDetails.coverImgUrl"/>
+        <!--<img v-lazy="songListDetails.picUrl"/>-->
         <i class="iconfont icon-erji">{{songListDetails.playCount}}</i>
         <i class="iconfont icon-iconfontxiangqingicon"></i>
       </div>
@@ -65,6 +65,7 @@
     computed:{
       ...mapState({
         songListDetails: state => state.songListDetails,
+        curMusic: state =>state.playSongs.curMusic,
       })
     },
     created()
@@ -88,7 +89,10 @@
       goMusicDetail()
       {
         this.$router.push({
-          name: '/',
+          name: 'songDetail',
+          params:{
+            id:this.curMusic
+          }
         })
       },
 

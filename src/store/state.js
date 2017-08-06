@@ -19,7 +19,7 @@ export default {
   searchList: [],
   //推荐歌单的列表
   songListDetails:{
-    'picUrl': '',
+    'coverImgUrl': '',
     'playCount': '',
     'name': '',
     'creator': {

@@ -1,16 +1,20 @@
 <template>
+  <!-- @canPlay="playMusic" ref="playStrip"-->
   <div id="music">
-    <!--@ended="initMusicState"-->
-    <audio id="musicPlayer" :src="musicUrl" @timeupdate="setCurTime"  @durationChange="setDuration" @canPlay="playMusic" refs="player"></audio>
-
+    <audio id="musicPlayer" :src="musicUrl" @ended="initMusicState" @timeupdate="setCurTime" ref="playStrip"
+           @durationchange="setDuration" @canPlay="playMusic"></audio>
   </div>
 </template>
 
 <script>
   import {mapState} from 'vuex'
+  import playStrip from '../../components/playStrip/playStrip.vue'
   export default
   {
     name: 'music',
+    components: {
+      playStrip
+    },
     computed: {
       ...mapState({
         // 音乐url
@@ -20,85 +24,88 @@
         // 当前音乐
         curMusic: state => state.playSongs.curMusic,
         // 歌单
-        //songListDetails: state => state.songListDetails.tracks
+        songListDetails: state => state.songListDetails.tracks
       })
     },
     methods: {
-      // 播放音乐
+      // 当前音乐的时间
       setCurTime (){
-        return this.$store.commit('set_musicCurrent', this.$refs.player.musicCurrent)
+         //console.log(this.$refs.playStrip.currentTime);
+         this.$store.commit('set_musicCurrent', this.$refs.playStrip.currentTime);
       },
       // 设置歌曲时长
       setDuration(){
-        return this.$store.commit('set_musicDuration', this.$refs.player.duration)
+         //console.log(this.$refs.playStrip.duration);
+         this.$store.commit('set_musicDuration', this.$refs.playStrip.duration);
       },
       // 播放音乐
       playMusic(){
-        return this.$store.commit('set_playStatus', true)
+         this.$store.commit('set_playStatus', true);
       },
-      // 初始化播放状态
-//      initMusicState(){
-//        if(this.songListDetails.length > 0)
-//        {
-//          let obj ={
-//            id: this.$router.params.id,
-//            type: 'next'
-//          }
-//          this.$store.dispatch('go_SwitchSongs',obj).then(
-//            (res) => {
-//              //false则暂停
-//              if(res == false)
-//              {
-//                this.$refs.player.pause();
-//                this.$store.commit('set_playStatus',false);
-//                this.$store.commit('set_musicDuration',0);
-//              }
-//              else
-//              {
-//                this.$store.dispatch('get_PlaySongDetails',res);
-//                this.$router.push({
-//                  name: 'songListDetails',
-//                  params:{
-//                    id: res
-//                  }
-//                })
-//              }
-//            }
-//          )
-//        }
-//        else
-//        {
-//          this.$refs.player.pause();
-//          this.$store.commit('set_playStatus',false);
-//          this.$store.commit('set_musicDuration',0);
-//        }
-//      }
+       //初始化播放状态
+      initMusicState(){
+        if(this.songListDetails.length > 0)
+        {
+          let obj ={
+            id: this.$route.params.id,
+            type: 'next'
+          };
+          this.$store.dispatch('go_switchSongs',obj).then(
+            (res) => {
+              //false则暂停
+              console.log(res);
+              if(res == false)
+              {
+                this.$refs.playStrip.pause();
+                this.$store.commit('set_playStatus',false);
+                this.$store.commit('set_musicDuration',0);
+              }
+              else
+              {
+                this.$store.dispatch('get_playMusicDetails',res);
+                this.$router.push({
+                  name: 'songListDetails',
+                  params:{
+                    id: res
+                  }
+                })
+              }
+            }
+          )
+        }
+        else
+        {
+          this.$refs.playStrip.pause();
+          this.$store.commit('set_playStatus',false);
+          this.$store.commit('set_musicDuration',0);
+        }
+      }
     },
-//    watch: {
-//      //监听歌曲的播放状态
-//      playStatus(state)
-//      {
-//        if(state == true)
-//        {
-//          this.$nextTick(() => {
-//            this.$refs.player.play();
-//          })
-//        }
-//        else
-//          this.$refs.player.pause();
-//      },
-//
-//      //监听音乐是否切歌
-//      musicUrl(val, oldval){
-//        if(oldval != "")
-//        {
-//          this.$nextTick(() => {
-//            this.$store.commit('set_playStatus', true);
-//            this.$refs.player.play();
-//          })
-//        }
-//      }
-//    }
+    watch: {
+      //监听歌曲的播放状态
+      playStatus(state)
+      {
+        if(state == true)
+        {
+          this.$nextTick(() => {
+            this.$refs.playStrip.play();
+          })
+        }
+        else
+          this.$refs.playStrip.pause();
+      },
+
+      //监听音乐是否切歌
+      musicUrl(val, oldval){
+        if(oldval != "")
+        {
+          this.$nextTick(() => {
+            this.$store.commit('set_playStatus', true);
+            this.$refs.playStrip.play();
+          })
+        }
+      }
+    }
   }
 
 </script>
