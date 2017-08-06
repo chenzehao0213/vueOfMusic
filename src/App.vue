@@ -1,7 +1,6 @@
 
 <template>
   <div id="app">
-    <music></music>
     <router-view></router-view>
   </div>
 </template>
@@ -19,6 +18,6 @@
   }
 </script>
 
-<style>
-
+<style lang="less">
+  @import "./assets/style/common";
 </style>

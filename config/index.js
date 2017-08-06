@@ -82,6 +82,51 @@ module.exports = {
           '^/top/playlist/highquality': '/top/playlist/highquality'
         }
       },
+
+      //搜索
+      '/search': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/search': '/search'
+        }
+      },
+
+      //推荐歌单详情
+      '/playlist/detail': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/playlist/detail': '/playlist/detail'
+        }
+      },
+
+      //歌曲详情
+      '/song/detail': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/song/detail': '/song/detail'
+        }
+      },
+
+      //音乐链接
+      '/music/url': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/music/url': '/music/url'
+        }
+      },
+
+      // 音乐歌词
+      '/lyric': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/lyric': '/lyric'
+        }
+      },
     },
     cssSourceMap: false
   }

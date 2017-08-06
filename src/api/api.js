@@ -26,6 +26,7 @@ const apiList = {
 
   //推荐歌单详情
   querySongListDetail: '/playlist/detail',
+
   //歌曲详情
   querySongDetail: '/song/detail',
   //音乐url
@@ -36,6 +37,8 @@ const apiList = {
   queryDjSub: "/dj/program",
   //搜索
   querySearch: "/search",
+  //  1: 单曲  10: 专辑  100: 歌手  1000: 歌单   1002: 用户
+
   //歌手单曲
   querySingerSong: "/artists",
   //歌手专辑

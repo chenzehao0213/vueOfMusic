@@ -1,0 +1,64 @@
+//定义宽高
+.mx_wh(@width ,@height)
+{
+  width:@width;
+  height:@height;
+}
+
+//定义宽高行高
+.mx_whlh(@width,@height,@line_height)
+{
+  width:@width;
+  height: @height;
+  line-height: @line_height;
+}
+
+//设置背景颜色
+.backgroundRed{
+  background: #ff3333;
+}
+
+
+//定义字体大小，字体颜色
+.mx_fsc(@size,@color)
+{
+  font-size:@size;
+  color: @color;
+}
+
+//绝对定位,定义top,left
+.mx_postl(@top,@left)
+{
+  position: absolute;
+  top: @top;
+  left: @left;
+}
+
+//定义高，行高
+.mx_hlh(@height,@line-height)
+{
+  height: @height;
+  line-height: @height;
+}
+
+//设置圆角
+.mx_bdrs(@radius)
+{
+  border-radius: @radius;
+}
+
+//布局盒模型
+.mx_flex{
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
+}
+
+// 布局宽度
+.mx_flex_item(@num) {
+  -webkit-box-flex: @num;
+  -moz-box-flex: @num;
+  flex: @num;
+  box-flex: @num;
+  min-width: 0;
+}

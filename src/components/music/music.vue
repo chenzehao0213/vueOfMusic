@@ -20,13 +20,13 @@
         // 当前音乐
         curMusic: state => state.playSongs.curMusic,
         // 歌单
-        //songListDetails: state => state.songDetails.tracks
+        //songListDetails: state => state.songListDetails.tracks
       })
     },
     methods: {
       // 播放音乐
       setCurTime (){
-        return this.$store.commit('set_musicCurrent', this.$refs.player.currentTime)
+        return this.$store.commit('set_musicCurrent', this.$refs.player.musicCurrent)
       },
       // 设置歌曲时长
       setDuration(){
@@ -57,7 +57,7 @@
 //              {
 //                this.$store.dispatch('get_PlaySongDetails',res);
 //                this.$router.push({
-//                  name: 'songDetails',
+//                  name: 'songListDetails',
 //                  params:{
 //                    id: res
 //                  }

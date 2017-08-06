@@ -14,5 +14,20 @@ export default {
   //KTV榜
   cloudMusicKTVList: [],
   //电音榜
-  cloudMusicEleList:[]
+  cloudMusicEleList:[],
+  //搜索
+  searchList: [],
+  //推荐歌单的列表
+  songListDetails:{
+    'picUrl': '',
+    'playCount': '',
+    'name': '',
+    'creator': {
+      'avatarUrl': ''
+    },
+    'collectionCount':0,
+    'commentCount': 0,
+    'shareCount': 0,
+    'tracks': []
+  }
 }

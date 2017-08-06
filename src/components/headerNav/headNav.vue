@@ -8,10 +8,10 @@
 				<!-- 搜索框 -->
 				<div class="searchBox">
 				<label for="searchBox"><span>搜索音乐，歌词，电台</span></label>
-				<input type="text"  id="searchBox" @click="goSearchSong">
+				<input type="text"  id="searchBox" @click="goSearchList">
 				</div>
-				<!-- 播放页和当前页icon切换 -->
-				<i @click="goSongDetails"></i>
+				<!-- 播放页和当前页icon切换-->
+        <i  @click="goSongDetails" class="iconfont icon-yinle"></i>
 			</div>
 			<!-- 选项框 -->
 			<tab>
@@ -46,7 +46,7 @@
       },
 
       //启动搜索框
-      goSearchSong()
+      goSearchList()
       {
         this.$router.push({
           name:'searchList'
@@ -58,7 +58,7 @@
       {
         if(index ==0)
         {
-          this.$router.push({name:'personalRecom'});
+          this.$router.push({name:'personal'});
         }
         else if(index==1)
         {
@@ -81,6 +81,73 @@
 
 </script>
 
-<style type="text/css">
+<style lang="less">
+  @import "../../assets/style/mixin";
+  .headerNavWrapper{
+    height: .88rem;
+  }
 
+  .headerNav{
+    font-size: .12rem;
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 999;
+    .mx_wh(100%,.88rem);
+    .searchFrame{
+      position: relative;
+      .mx_whlh(100%,.48rem,.48rem);
+      .backgroundRed;
+      text-align: center;
+      .icon-micro{
+        .mx_fsc(.22rem,#fff);
+        .mx_postl(0,5%);
+      }
+      .icon-yinle{
+        .mx_fsc(.22rem,#fff);
+        .mx_postl(.03rem,90%);
+      }
+      .cancelSearch {
+        .mx_fsc(.14rem, #fff);
+        .mx_postl(0, 90%);
+      }
+      .searchBox{
+        position: relative;
+        display: inline-block;
+        width: 70%;
+        label{
+          color: #dedede;
+          .mx_hlh(.32rem, .34rem);
+          .mx_fsc(.14rem, #dedede);
+          .mx_postl(.08rem, 22%);
+          span{
+            font-size: .13rem;
+          }
+        }
+        label:before{
+          margin-right: .05rem;
+        }
+        input{
+          .mx_whlh(100%,.32rem,.24rem);
+          .mx_fsc(.12rem, #666);
+          .mx_bdrs(.2rem);
+          text-indent: 5%;
+        }
+      }
+    }
+    .tabNaver {
+      .mx_flex;
+      .mx_hlh(.4rem, .4rem);
+      .mx_fsc(.14rem, #666);
+      background-color: #fff;
+      span {
+        .mx_flex_item(1);
+        text-align: center;
+      }
+    }
+    .vux-tab-item {
+      .mx_fsc(.14rem, #666);
+      .mx_hlh(.4rem, .4rem);
+    }
+  }
 </style>

@@ -26,6 +26,21 @@ export default {
         'type': apiUrl[i],
       })
     }
-  }
+  },
 
+  //获取搜索列表
+  async get_searchList(context,payload)
+  {
+    let res = await getMusicData('querySearch',payload);
+    context.commit('set_searchList',res.data.result);
+  },
+
+
+  //获取推荐歌单列表
+  async get_songListDetails(context,payload)
+  {
+    let res = await getMusicData('querySongListDetail',payload);
+    console.log(res);
+    context.commit('set_songListDetails',res.data.playlist);
+  }
 }

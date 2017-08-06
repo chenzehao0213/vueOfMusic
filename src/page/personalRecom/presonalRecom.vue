@@ -18,7 +18,7 @@
         <b>推荐歌单</b>
         <i class="icon-font icon-right"></i>
       </h1>
-      <router-link to="{name:'songListDetails' , params:{id:item.id}" v-for="(item,i) in recommendList" :key="i" tag="li">
+      <router-link :to="{name:'songListDetails',params:{id:item.id}}"  v-for="(item,i) in recommendList" :key="i" tag="li">
         <i class="icon-font icon-headset">{{item.playCount}}</i>>
         <img v-lazy="item.picUrl">
         <p>{{item.name}}</p>

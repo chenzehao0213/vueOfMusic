@@ -36,6 +36,17 @@ export default
       case 7 :
         state.cloudMusicKTVList = payload.result;
     }
-  }
+  },
 
+  //搜索
+  set_searchList(state,payload)
+  {
+    state.searchList = payload;
+  },
+
+  //推荐歌单的列表
+  set_songListDetails(state,payload)
+  {
+    state.songListDetails = payload;
+  }
 }
