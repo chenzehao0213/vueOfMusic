@@ -59,7 +59,9 @@
           let obj={
             id:this.$route.params.id,
             type:'prev'};
+          console.log(this.$route.params.id);
           this.$store.dispatch('go_switchSongs',obj).then((res)=>{
+            console.log(res);
             this.$store.dispatch('get_playMusicDetails',res);
             this.$router.push({
               name:'songDetail',

@@ -1,0 +1,34 @@
+@import "../../assets/style/mixin.less";
+#songDetail{
+  position: fixed;
+  .mx_wh(100%,100%);
+  .header{
+    position: relative;
+    width: 100%;
+    background: #000000;
+    text-align: center;
+    i{
+      .mx_fsc(.2rem,#fff);
+      .mx_postl(.11rem,5%);
+    }
+    span{
+      display: block;
+      .mx_whlh(100%,.16rem,.13rem);
+      .mx_fsc(.09rem,#fff);
+      //text-align: center;
+    }
+    p{
+      .mx_whlh(100%,.28rem,.28rem);
+      .mx_fsc(.14rem,#fff);
+      .mx_single_ellipsis;
+    }
+    .bar-line{
+      display: block;
+      margin-top:.03rem;
+      .mx_wh(100%,1px);
+      background: -webkit-radial-gradient(#d3d3d3 -90%, transparent 100%);;
+      background: radial-gradient(#d3d3d3 -90%, transparent 100%);
+    }
+  }
+
+}

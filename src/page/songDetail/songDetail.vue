@@ -3,21 +3,23 @@
     <!--头部功能栏-->
     <div class="header">
       <i class="iconfont icon-fanhui" @click="goBack"></i>
-      <span>
-        <p>{{this.songDetails.songs[0].name}}</p>
-        <p>{{this.songDetails.songs[0].ar[0].name}}</p>
-      </span>
+      <p>{{this.songDetails.songs[0].name}}</p>
+      <span>{{this.songDetails.songs[0].ar[0].name}}</span>
+      <div class="bar-line"></div>
     </div>
 
     <!--音乐播放框和歌词框-->
     <div class="content">
+      <span class="play-controler" :class="{'play-controler-status':playStatus==true}" v-if="showLyric==false"></span>
       <div v-if="showLyric== false" @click="switchContentAndLyric">
-        <div class="cd"></div>
-        <img v-lazy="songDetails.songs[0].al.picUrl">
+        <div class="cd" :class="{'play-anima-status':playStatus==true}"></div>
+        <img v-lazy="songDetails.songs[0].al.picUrl" class="cdImg" :class="{'play-anima-status':playStatus==true}">
       </div>
 
-      <div v-if="showLyric== true" @click="switchContentAndLyric">
-        <p>{{this.lyric}}</p>
+      <div v-if="showLyric== true" @click="switchContentAndLyric" class="lyricBox">
+        <ul>
+          <li></li>
+        </ul>
       </div>
     </div>
 
@@ -49,6 +51,7 @@
         songDetails: state => state.playSongs.songDetails,
         lyric: state => state.playSongs.lyric,
         songListStatus: state => state.playSongs.songListStatus,
+        playStatus: state => state.playSongs.playStatus,
       })
     },
     created()
@@ -81,6 +84,6 @@
   }
 </script>
 
-<style>
-
+<style lang="less">
+  @import "./songDetail";
 </style>

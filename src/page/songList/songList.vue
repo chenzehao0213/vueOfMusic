@@ -4,8 +4,7 @@
   <div>
     <ul>
       <router-link to="" v-for="(item,i) in songList" :key="i" tag="li">
-        <i>logo</i>
-        <p></p>
+        <i class="iconfont icon-erji">{{item.playCount}}</i>
         <img v-lazy="item.coverImgUrl">
         <p>{{item.name}}</p>
       </router-link>
@@ -68,6 +67,30 @@
 
 
 
-<style>
-
+<style lang="less">
+  @import "../../assets/style/mixin.less";
+  #songList{
+    ul{
+      .mx_flex;
+      .mx_flex_content;
+      margin: 0.5%;
+      li{
+        .mx_flex_item(0 0 49.5%);
+        position: relative;
+        overflow: hidden;
+        i{
+          .mx_postr(.03rem,.1rem);
+          .mx_fsc(.01rem,#fff);
+        }
+        img{
+          display: block;
+          width: 100%;
+        }
+        p{
+          margin-right: 0.02rem;
+          .mx_fsc(0.1rem,#333);
+        }
+      }
+    }
+  }
 </style>

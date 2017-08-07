@@ -14,7 +14,7 @@
         <i  @click="goSongDetails" class="iconfont icon-yinle"></i>
 			</div>
 			<!-- 选项框 -->
-			<tab>
+			<tab class="tabNaver">
 				<tab-item @on-item-click="skipPage">个性推荐</tab-item>
 				<tab-item @on-item-click="skipPage">歌单</tab-item>
 				<tab-item @on-item-click="skipPage">排行榜</tab-item>
@@ -84,7 +84,7 @@
 <style lang="less">
   @import "../../assets/style/mixin";
   .headerNavWrapper{
-    height: .88rem;
+    height: 0.78rem;
   }
 
   .headerNav{
@@ -93,7 +93,7 @@
     top:0;
     left:0;
     z-index: 999;
-    .mx_wh(100%,.88rem);
+    .mx_wh(100%,0.78rem);
     .searchFrame{
       position: relative;
       .mx_whlh(100%,.48rem,.48rem);
@@ -137,7 +137,7 @@
     }
     .tabNaver {
       .mx_flex;
-      .mx_hlh(.4rem, .4rem);
+      .mx_hlh(.3rem, .3rem);
       .mx_fsc(.14rem, #666);
       background-color: #fff;
       span {

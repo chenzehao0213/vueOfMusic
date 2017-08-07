@@ -1,7 +1,7 @@
 <!--这是个性推荐页面-->
 
 <template>
-  <div class="personRecommend" id="personRecommend" @touchstart="getTouch" @touchend="touchEnd" >
+  <div  id="personRecommend" @touchstart="getTouch" @touchend="touchEnd" >
     <!--头部搜索框-->
     <header-nav tab-index="0"></header-nav>
 
@@ -14,26 +14,28 @@
     <!--滚动框结束-->
 
     <div class="recomlist">
-      <h1>
-        <b>推荐歌单</b>
-        <i class="icon-font icon-right"></i>
+      <h1 class="list-item">
+        <b></b>推荐歌单
+        <i class="icon-font icon-you"></i>
       </h1>
-      <router-link :to="{name:'songListDetails',params:{id:item.id}}"  v-for="(item,i) in recommendList" :key="i" tag="li">
-        <i class="icon-font icon-headset">{{item.playCount}}</i>>
-        <img v-lazy="item.picUrl">
-        <p>{{item.name}}</p>
-      </router-link>
+      <ul>
+        <router-link :to="{name:'songListDetails',params:{id:item.id}}"  v-for="(item,i) in recommendList" :key="i" tag="li">
+          <i class="icon-font icon-erji">{{item.playCount}}</i>>
+          <img v-lazy="item.picUrl">
+          <p>{{item.name}}</p>
+        </router-link>
+      </ul>
     </div>
 
     <!--独家放送开始-->
     <div class="privateContext">
-      <h1>
-        <b>独家放送</b>
-        <i class="icon-font icon-right"></i>
+      <h1 class="list-item">
+        <b></b>独家放送
+        <i class="icon-font icon-you"></i>
       </h1>
       <ul>
         <li v-for="(item,i) in privateContext" :key="i">
-          <img v-lazy="item.sPicUrl" :width="item.width" :height="item.height">
+          <img v-lazy="item.sPicUrl">
           <p>{{item.name}}</p>
         </li>
       </ul>
@@ -44,14 +46,14 @@
 
     <!--推荐mv开始-->
     <div class="recommendMV">
-      <h1>
-        <b>推荐MV</b>
-        <i class="icon-font icon-right"></i>
+      <h1 class="list-item">
+        <b></b>推荐MV
+        <i class="icon-font icon-you"></i>
       </h1>
       <ul>
         <li v-for="item in recommendMV" tag="li" >
           <i class="iconfont icon-playMv">{{item.playCount}}</i>
-          <img v-lazy="item.picUrl" width="100%" height="100%">
+          <img v-lazy="item.picUrl">
           <p id="artists">{{item.name}}</p>
           <p id="artistName">{{item.artistName}}</p>
         </li>
@@ -62,9 +64,9 @@
 
     <!--主播电台开始-->
     <div class="radiostation">
-      <h1>
-        <b>主播电台</b>
-        <i class="icon-font icon-right"></i>
+      <h1 class="list-item">
+        <b></b>主播电台
+        <i class="icon-font icon-you"></i>
       </h1>
       <ul>
         <li v-for="item in radioStations">
@@ -144,6 +146,89 @@
 
 
 
-<style>
+<style lang="less">
+  @import "../../assets/style/mixin.less";
+  #personRecommend {
+    .list-item {
+      position: relative;
+      .mx_fsc(.2rem,#333);
+      .mx_whlh(100%,.45rem,.45rem);
+      font-weight:normal;
+      b{
+        .mx_hlh(.15rem,.45rem);
+        .mx_bd(.01rem,#f33);
+        margin-right: .05rem;
+      }
+    }
+    ul{
+      .mx_flex;
+      .mx_flex_content;
+      li{
+        position: relative;
+        overflow: hidden;
+        img{
+          display: block;
+          width: 100%;
+        }
+        p{
+          .mx_hlh(.3rem,.15rem);
+          //padding:.01rem  0;
+          .mx_fsc(.05rem,#666);
+        }
+      }
+    }
+    //推荐歌单
+    .recomlist,.radiostation{
+      font-size: 0;
+      li{
+        .mx_flex_item(0 0 33%);
+        p{
+          .mx_more_ellipsis;
+        }
+      }
+    }
 
+    .recomlist{
+      li{
+        i{
+          .mx_postr(.03rem,.1rem);
+          .mx_fsc(.01rem,#fff);
+        }
+      }
+    }
+
+    //独家放送
+    .privateContext{
+      li{
+        .mx_flex_item(0 0 49.5%);
+        p{
+          .mx_more_ellipsis;
+        }
+      }
+      li:nth-child(3)
+      {
+        .mx_flex_item(0 0 100%);
+      }
+    }
+
+    //推荐mv
+    .recommendMV{
+      li{
+        .mx_flex_item(0 0 49.5%);
+        p{
+          .mx_single_ellipsis;
+          .mx_fsc(.12rem,#333);
+          .mx_hlh(.2rem,.2rem);
+        }
+        i{
+          .mx_postr(.03rem,.05rem);
+          .mx_fsc(.12rem,#fff);
+        }
+      }
+
+    }
+
+
+
+  }
 </style>

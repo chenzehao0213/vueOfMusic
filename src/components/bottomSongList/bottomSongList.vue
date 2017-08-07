@@ -6,7 +6,7 @@
 
     <div class="bottom-content">
       <ul>
-        <li v-for="(item,i) in songListDetails.tracks"  :key="i" @click="switchSongs">
+        <li v-for="(item,i) in songListDetails.tracks"  :key="i" @click="switchSongs(item.id)">
           <i class="iconfont icon-laba" v-if="item.id==curMusic"></i>
           {{item.name}}
           <s> - {{item.ar[0].name}}</s>
@@ -32,8 +32,14 @@
     },
 
     methods:{
-      switchSongs() {
-
+      switchSongs(id) {
+        this.$store.dispatch('get_playMusicDetails',id);
+        this.$router.push({
+          name:'songDetail',
+          params:{
+            id:id
+          }
+        })
       },
       closeBottomSongList(){
         this.$store.commit('set_songListStatus',false);
