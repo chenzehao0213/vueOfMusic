@@ -133,7 +133,6 @@
         .mx_flex_item(3);
         height:100%;
         padding-top:.1rem;
-
         li{
           .mx_fsc(.12rem,#666);
           .mx_single_ellipsis;

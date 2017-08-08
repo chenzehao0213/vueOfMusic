@@ -101,6 +101,19 @@
   -webkit-box-orient: vertical;
 }
 
+// flex 水平垂直居中
+.mx_flex_mid {
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  align-items: center;
+}
+
 // 单行文本显示省略号
 .mx_single_ellipsis {
   white-space: nowrap;
@@ -114,4 +127,10 @@
 // 边框
 .mx_bd(@num, @color) {
   border: @num solid @color;
+}
+
+.mx_fc(@size,@color)
+{
+  font-size: @size;
+  color: @color;
 }

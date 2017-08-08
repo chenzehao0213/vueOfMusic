@@ -7,6 +7,7 @@
     width: 100%;
     background: #000000;
     text-align: center;
+    z-index: 999;
     i{
       .mx_fsc(.2rem,#fff);
       .mx_postl(.11rem,5%);
@@ -26,9 +27,73 @@
       display: block;
       margin-top:.03rem;
       .mx_wh(100%,1px);
-      background: -webkit-radial-gradient(#d3d3d3 -90%, transparent 100%);;
-      background: radial-gradient(#d3d3d3 -90%, transparent 100%);
+      background: #000;
     }
   }
 
+  .content{
+    .mx_wh(100%,100%);
+
+    .play-controler{
+      .mx_postl(.45rem, 45%);
+      display: block;
+      .mx_wh(1rem, 1.4rem);
+      background: url('../../assets/img/play-controler.png') left -.06rem no-repeat;
+      background-size: cover;
+      z-index: 8;
+      -webkit-transition: all .3s ease-in;
+      transition: all .3s ease-in;
+      -webkit-transform-origin: left top;
+      -ms-transform-origin: left top;
+      transform-origin: left top;
+      -webkit-transform: rotate(-20deg);
+      -ms-transform: rotate(-20deg);
+      transform: rotate(-20deg);
+    }
+    .cd{
+      .mx_wh(70%,45%);
+      .mx_postl(1.3rem,15%);
+      background: url('../../assets/img/cd-wrapper.png') 0/contain  no-repeat;
+      background-size: cover;
+      display: block;
+      z-index: 7;
+      }
+    .cdImg{
+      -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+      transform-origin: center center;
+      .mx_wh(50%,35%);
+      .mx_bdrs(50%);
+      .mx_postl(1.7rem,.9rem);
+      z-index: 6;
+
+    }
+  }
+  .playStrip{
+    .mx_wh(100%,100%);
+    .mx_postl(60%,0rem);
+    .progress-bar{
+      span{
+        .mx_fsc(.22rem,#000);
+      }
+    }
+    .playTools{
+      .mx_flex;
+      .mx_flex_content;
+
+    }
+  }
 }
+
+
+
+
+
+
+
+//.play-controler{
+//
+//}
+//.play-controler-status{
+//  background-image:url('../../assets/img/play-controler.png') ;
+//}

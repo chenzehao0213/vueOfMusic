@@ -5,8 +5,8 @@
       <i class="progress-bar">
         <s class="progress-dot"></s>
       </i>
-    <span class="curTime">{{this.musicCurrent}}</span>
-    <span class="duration">{{this.musicDuration}}</span>
+      <span class="curTime">{{this.musicCurrent}}</span>
+      <span class="duration">{{this.musicDuration}}</span>
     </div>
 
     <!--播放控制栏-->
