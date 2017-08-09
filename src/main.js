@@ -5,9 +5,9 @@ import router from './router'
 import App from './App'
 import store from './store'
 import VueLazyload from 'vue-lazyload'
-
+import format from './utils/utils'
 Vue.config.productionTip = false
-
+Vue.prototype.format = format;
 Vue.use(VueLazyload)
 
 /* eslint-disable no-new */

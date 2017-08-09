@@ -23,7 +23,7 @@
     "vue-router": "^2.7.0",
     "vue-style-loader": "^3.0.1",
     "vuex": "^2.3.1",
-    "vux": "^2.5.5"
+    "vux": "^2.5.7"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

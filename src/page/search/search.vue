@@ -32,7 +32,7 @@
     <!--单曲-->
     <div v-if="searchVal!='' && searchType ==1" class="single-song">
       <ul>
-        <router-link to="" v-for="(item,i) in searchList.songs" tag="li">
+        <router-link :to="{name:'songDetail',params:{id:item.id}}" v-for="(item,i) in searchList.songs" tag="li">
           <p>{{item.name}}</p>
           <span>{{item.artists[0].name}} - {{item.album.name}}</span>
         </router-link>
@@ -65,7 +65,7 @@
     <!--歌单-->
     <div v-if="searchVal!='' && searchType ==1000" class="song-list" >
       <ul>
-        <router-link v-for="(item,i) in searchList.playlists" to="" tag="li" :key="i">
+        <router-link v-for="(item,i) in searchList.playlists" :to="{name:'songListDetails',params:{id:item.id}}" tag="li" :key="i">
           <img v-lazy="item.coverImgUrl">
           <div class="common-style">
             <p>{{item.name}}</p>
@@ -116,6 +116,11 @@
       }
     },
     methods:{
+
+      chooseHotSearch(item) {
+        this.searchVal = item;
+        this.goSearch();
+      },
       //切换搜索类型
       switchType(index)
       {
@@ -143,7 +148,6 @@
       {
         if(this.searchVal != "")
         {
-          console.log(this.searchVal + "  " +this.searchType);
           let parms ={keywords: this.searchVal, type: this.searchType};
           this.$store.dispatch('get_searchList',parms);
         }
@@ -195,6 +199,7 @@
         input{
           .mx_wh(100%,100%);
           .mx_bdrs(.2rem);
+          .mx_fsc(.15rem,#000);
           text-indent: 5%;
         }
       }

@@ -69,6 +69,7 @@ export default {
             }
             else
             {
+              console.log(songList[i-1].id);
               return songList[i-1].id;
             }
           }

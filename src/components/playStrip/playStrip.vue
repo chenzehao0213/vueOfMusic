@@ -1,12 +1,12 @@
 <template>
   <div id="playStrip">
     <!--进度条-->
-    <div class="progress-bar">
-      <i class="progress-bar">
-        <s class="progress-dot"></s>
-      </i>
-      <span class="curTime">{{this.musicCurrent}}</span>
-      <span class="duration">{{this.musicDuration}}</span>
+    <div class="progress">
+      <span class="curTime">{{formatTime(this.musicCurrent)}}</span>
+        <i class="progress-bar" :style={width:progressWidth}>
+          <s class="progress-dot" ></s>
+        </i>
+        <span class="duration">{{formatTime(this.musicDuration)}}</span>
     </div>
 
     <!--播放控制栏-->
@@ -43,7 +43,13 @@
         playStatus: state => state.playSongs.playStatus,
         songListStatus :state => state.playSongs.songListStatus,
         songListDetails:state => state.songListDetails,
-      })
+      }),
+      //计算进度条的长度
+      progressWidth()
+      {
+        let per = (this.musicCurrent / this.musicDuration).toFixed(3);
+        return per * 100 + "%";
+      },
     },
     methods:{
       //显示播放列表
@@ -59,9 +65,7 @@
           let obj={
             id:this.$route.params.id,
             type:'prev'};
-          console.log(this.$route.params.id);
           this.$store.dispatch('go_switchSongs',obj).then((res)=>{
-            console.log(res);
             this.$store.dispatch('get_playMusicDetails',res);
             this.$router.push({
               name:'songDetail',
@@ -102,6 +106,13 @@
         {
           this.$store.commit('set_playStatus',true);
         }
+      },
+      formatTime(val){
+        let min = parseInt(val/60);
+        let sec = parseInt(val%60);
+        min>10 ? min : min="0"+min;
+        sec>10 ?sec :sec = "0" +sec;
+        return min + ":" + sec ;
       }
 
     }

@@ -1,6 +1,6 @@
 <template>
   <div id="rankList">
-    <header-nav tab-index="3"></header-nav>
+    <header-nav index="2"></header-nav>
     <h1 class="title">云音乐官方榜</h1>
 
     <!--飙升榜-->

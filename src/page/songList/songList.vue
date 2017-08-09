@@ -1,9 +1,9 @@
 <template>
   <div id="songList" @touchstart="getOrigin" @touchend="compDistance">
-  <header-nav tab-index="1"></header-nav>
+  <header-nav index="1"></header-nav>
   <div>
     <ul>
-      <router-link to="" v-for="(item,i) in songList" :key="i" tag="li">
+      <router-link :to="{name:'songListDetails',params:{id:item.id}}" v-for="(item,i) in songList" :key="i" tag="li">
         <i class="iconfont icon-erji">{{item.playCount}}</i>
         <img v-lazy="item.coverImgUrl">
         <p>{{item.name}}</p>
@@ -80,7 +80,7 @@
         overflow: hidden;
         i{
           .mx_postr(.03rem,.1rem);
-          .mx_fsc(.01rem,#fff);
+          .mx_fsc(.12rem,#fff);
         }
         img{
           display: block;

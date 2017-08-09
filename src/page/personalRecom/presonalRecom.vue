@@ -3,24 +3,24 @@
 <template>
   <div  id="personRecommend" @touchstart="getTouch" @touchend="touchEnd" >
     <!--头部搜索框-->
-    <header-nav tab-index="0"></header-nav>
+    <header-nav index="0"></header-nav>
 
     <!--滚动框开始-->
-    <swiper loop auto dotsPosition="center" :aspect-ratio="300/800">
-      <swiper-item v-for="(item,i) in bannerList" :key="i">
-        <img width="100%" height="100%" v-lazy="item.pic">
-      </swiper-item>
-    </swiper>
+      <swiper loop auto dots-position="center" :aspect-ratio="300/800" >
+        <swiper-item v-for="(item,i) in bannerList" :key="i">
+          <img width="100%" height="100%" v-lazy="item.pic">
+        </swiper-item>
+      </swiper>
     <!--滚动框结束-->
 
     <div class="recomlist">
       <h1 class="list-item">
         <b></b>推荐歌单
-        <i class="icon-font icon-you"></i>
+        <i class="iconfont icon-you"></i>
       </h1>
       <ul>
         <router-link :to="{name:'songListDetails',params:{id:item.id}}"  v-for="(item,i) in recommendList" :key="i" tag="li">
-          <i class="icon-font icon-erji">{{item.playCount}}</i>>
+          <i class="iconfont icon-erji">{{item.playCount}}</i>
           <img v-lazy="item.picUrl">
           <p>{{item.name}}</p>
         </router-link>
@@ -31,7 +31,7 @@
     <div class="privateContext">
       <h1 class="list-item">
         <b></b>独家放送
-        <i class="icon-font icon-you"></i>
+        <i class="iconfont icon-you"></i>
       </h1>
       <ul>
         <li v-for="(item,i) in privateContext" :key="i">
@@ -48,7 +48,7 @@
     <div class="recommendMV">
       <h1 class="list-item">
         <b></b>推荐MV
-        <i class="icon-font icon-you"></i>
+        <i class="iconfont icon-you"></i>
       </h1>
       <ul>
         <li v-for="item in recommendMV" tag="li" >
@@ -66,11 +66,11 @@
     <div class="radiostation">
       <h1 class="list-item">
         <b></b>主播电台
-        <i class="icon-font icon-you"></i>
+        <i class="iconfont icon-you"></i>
       </h1>
       <ul>
         <li v-for="item in radioStations">
-          <i class="icon-font icon-play"></i>
+          <i class="iconfont icon-play"></i>
           <img v-lazy="item.picUrl">
           <p>{{item.name}}</p>
           <span>{{item.program.radio.name}}</span>
@@ -159,6 +159,9 @@
         .mx_bd(.01rem,#f33);
         margin-right: .05rem;
       }
+      .icon-you{
+        .mx_fsc(.15rem,#000);
+      }
     }
     ul{
       .mx_flex;
@@ -173,7 +176,8 @@
         p{
           .mx_hlh(.3rem,.15rem);
           //padding:.01rem  0;
-          .mx_fsc(.05rem,#666);
+          .mx_fsc(.12rem,#666);
+          .mx_more_ellipsis;
         }
       }
     }
@@ -190,9 +194,9 @@
 
     .recomlist{
       li{
-        i{
+        .icon-erji{
           .mx_postr(.03rem,.1rem);
-          .mx_fsc(.01rem,#fff);
+          .mx_fsc(.12rem,#fff);
         }
       }
     }

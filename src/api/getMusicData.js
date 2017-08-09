@@ -13,7 +13,7 @@ const opera_res = (data) =>{
 }
 
 export default async(pathName,queryData)=>{
-	let str = "http://localhost:8099";
+	let str = "http://47.94.16.170:3000";
 	let url = str.concat(api[pathName]);
 	let result;
 	if (queryData) {

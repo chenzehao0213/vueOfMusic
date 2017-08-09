@@ -70,10 +70,12 @@
     },
     created()
     {
-      console.log(this.$route.params.id);
-      this.$store.dispatch('get_songListDetails',{
-        id: this.$route.params.id
-      });
+      if(this.$route.params.id != undefined)
+      {
+        this.$store.dispatch('get_songListDetails',{
+          id: this.$route.params.id
+        });
+      }
     },
 
     methods:{
@@ -105,7 +107,7 @@
   #songListDetails{
     .header{
       .mx_wh(100%,auto);
-      //background: linear-gradient(left, #dcdcdc,#666);
+      background: linear-gradient(left, #dcdcdc,#666);
       background: #666;
     }
     //头部

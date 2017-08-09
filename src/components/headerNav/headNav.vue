@@ -14,10 +14,10 @@
         <i  @click="goSongDetails" class="iconfont icon-yinle"></i>
 			</div>
 			<!-- 选项框 -->
-			<tab class="tabNaver">
-				<tab-item @on-item-click="skipPage">个性推荐</tab-item>
-				<tab-item @on-item-click="skipPage">歌单</tab-item>
-				<tab-item @on-item-click="skipPage">排行榜</tab-item>
+			<tab class="tabNaver" active-color="#ff3333" animate>
+				<tab-item @on-item-click="skipPage" :selected="index==0">个性推荐</tab-item>
+				<tab-item @on-item-click="skipPage" :selected="index==1">歌单</tab-item>
+				<tab-item @on-item-click="skipPage" :selected="index==2">排行榜</tab-item>
 			</tab>
 		</div>
 	</div>
@@ -31,7 +31,7 @@
     {
       return {};
     },
-    props:['tab-index'],
+    props:['index'],
     methods: {
 		  //跳转到播放界面
       goSongDetails()
@@ -58,7 +58,7 @@
       {
         if(index ==0)
         {
-          this.$router.push({name:'personal'});
+          this.$router.push({name:'recommend'});
         }
         else if(index==1)
         {
@@ -84,7 +84,7 @@
 <style lang="less">
   @import "../../assets/style/mixin";
   .headerNavWrapper{
-    height: 0.78rem;
+    height: 0.88rem;
   }
 
   .headerNav{
@@ -93,7 +93,7 @@
     top:0;
     left:0;
     z-index: 999;
-    .mx_wh(100%,0.78rem);
+    .mx_wh(100%,0.88rem);
     .searchFrame{
       position: relative;
       .mx_whlh(100%,.48rem,.48rem);
@@ -137,17 +137,13 @@
     }
     .tabNaver {
       .mx_flex;
-      .mx_hlh(.3rem, .3rem);
-      .mx_fsc(.14rem, #666);
+      .mx_whlh(100%,.4rem,.4rem);
       background-color: #fff;
-      span {
-        .mx_flex_item(1);
-        text-align: center;
+      .vux-tab-item {
+        .mx_fsc(.14rem, #666);
+        .mx_hlh(.4rem, .4rem);
       }
     }
-    .vux-tab-item {
-      .mx_fsc(.14rem, #666);
-      .mx_hlh(.4rem, .4rem);
-    }
+
   }
 </style>
