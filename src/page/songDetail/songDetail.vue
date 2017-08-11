@@ -76,6 +76,7 @@
       goBack()
       {
         this.$router.go(-1);
+        this.$store.commit('set_songListStatus', false);
       },
     }
   }

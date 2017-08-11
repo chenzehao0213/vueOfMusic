@@ -6,7 +6,7 @@ export default {
   {
     context.commit('set_loading',true);
     let res = await getMusicData('queryHighquality');
-    console.log(res);
+    // console.log(res);
     context.commit('set_songList',res.data.playlists);
     context.commit('set_loading',false);
   },
@@ -40,7 +40,6 @@ export default {
   async get_songListDetails(context,payload)
   {
     let res = await getMusicData('querySongListDetail',payload);
-    console.log(res);
     context.commit('set_songListDetails',res.data.playlist);
   }
 }

@@ -17,10 +17,10 @@ export default {
   //获取歌曲详情
   async get_songDetails(context,payload)
   {
-    //console.log(payload);
     let res = await getMusicData('querySongDetail',{
       ids:payload
     });
+    // console.log(res);
     context.commit('set_songDetails',res.data);
   },
 
@@ -30,7 +30,7 @@ export default {
     let res = await getMusicData('queryLyric',{
       id:payload
     });
-    console.log(res);
+    // console.log(res);
     if(res.data.lrc != undefined)
     {
       context.commit('set_lyric',res.data.lrc.lyric);

@@ -175,19 +175,18 @@
         }
         p{
           .mx_hlh(.3rem,.15rem);
-          //padding:.01rem  0;
-          .mx_fsc(.12rem,#666);
-          .mx_more_ellipsis;
+          .mx_fsc(.1rem,#666);
         }
       }
     }
     //推荐歌单
-    .recomlist,.radiostation{
+    .recomlist,
+    .radiostation{
       font-size: 0;
       li{
         .mx_flex_item(0 0 33%);
         p{
-          .mx_more_ellipsis;
+          .mx_single_ellipsis;
         }
       }
     }
@@ -206,7 +205,7 @@
       li{
         .mx_flex_item(0 0 49.5%);
         p{
-          .mx_more_ellipsis;
+          .mx_single_ellipsis;
         }
       }
       li:nth-child(3)

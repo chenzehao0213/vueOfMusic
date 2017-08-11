@@ -40,6 +40,7 @@
             id:id
           }
         })
+        this.$route.params.id = id;
       },
       closeBottomSongList(){
         this.$store.commit('set_songListStatus',false);
@@ -71,7 +72,7 @@
     .mx_postl(30%,0);
     .bottom-header{
       .mx_wh(100%,10%);
-      .mx_fsc(.15rem,#000);
+      .mx_fsc(.1rem,#000);
       .mx_flex_mid;
       border-bottom: #666 1px solid;
     }
@@ -81,7 +82,7 @@
       overflow:scroll;
       margin-left: 5%;
       li{
-        .mx_flex_item(0 0 15%);
+        .mx_flex_item(0 0 30%);
         padding:.1rem 0 .02rem 0;
         border-bottom:1px solid #d3d3d3;
         .mx_single_ellipsis;
@@ -96,7 +97,7 @@
     }
     .bottom-footer{
       .mx_wh(100%,10%);
-      .mx_fsc(.3rem,#000);
+      .mx_fsc(.2rem,#000);
       .mx_flex_mid;
       border-top:#666 solid 1px;
     }

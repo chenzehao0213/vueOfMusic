@@ -2,6 +2,7 @@
   <div id="playStrip">
     <!--进度条-->
     <div class="progress">
+      <div class="schedule" @touchmove="changeProgress" ref="schedule" @touchstart="changeProgress"></div>
       <span class="curTime">{{formatTime(this.musicCurrent)}}</span>
         <i class="progress-bar" :style={width:progressWidth}>
           <s class="progress-dot" ></s>
@@ -72,7 +73,8 @@
               params:{
                 id:res
               }
-            })
+            });
+            this.$route.params.id = res;
           })
         }
       },
@@ -84,7 +86,9 @@
           let obj={
             id:this.$route.params.id,
             type:'next'};
+          console.log(this.$route.params.id);
           this.$store.dispatch('go_switchSongs',obj).then((res)=>{
+            console.log(res);
             this.$store.dispatch('get_playMusicDetails',res);
             this.$router.push({
               name:'songDetail',
@@ -92,6 +96,7 @@
                 id:res
               }
             })
+            this.$route.params.id = res;
           })
         }
       },
@@ -110,9 +115,14 @@
       formatTime(val){
         let min = parseInt(val/60);
         let sec = parseInt(val%60);
-        min>10 ? min : min="0"+min;
-        sec>10 ?sec :sec = "0" +sec;
+        min>9 ? min : min="0"+min;
+        sec>9 ?sec :sec = "0" +sec;
         return min + ":" + sec ;
+      },
+
+      //改变进度条
+      changeProgress(){
+
       }
 
     }
